@@ -58,7 +58,7 @@ router.post("/submit-form-sow", async (req, res) => {
 });
 
 //Piglets route----------------------------------------------------------------------------------
-router.post("/submit-form-piglets", async (req, res) => {
+router.post("/submit-form-piglet", async (req, res) => {
   try {
     if (!Piglets) {
       return res.status(500).json({ message: "Sow model not found" });
@@ -89,7 +89,7 @@ router.post("/submit-form-piglets", async (req, res) => {
 router.post("/submit-form-khassi", async (req, res) => {
   try {
     if (!Khassi) {
-      return res.status(500).json({ message: "Sow model not found" });
+      return res.status(500).json({ message: "Khassi model not found" });
     }
 
     const newKhassi = new Khassi({

@@ -27,7 +27,7 @@ router.get("/sow-count", async(req, res) => {
  
 })
 // piglets count route----------------------------------------------------------------
-router.get("/piglets-count", async(req, res) => {
+router.get("/piglet-count", async(req, res) => {
     try {
         const count = await Piglets.countDocuments();
         res.json({ count });
