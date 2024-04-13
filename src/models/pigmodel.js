@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 // Define the schema for a boar
 const BoarSchema = new mongoose.Schema({
-  id: Number,
+  id: String,
+  Number,
   roomNumber: Number,
   CSF: Date,
   FMD: Date,
@@ -15,7 +16,9 @@ const Boar = mongoose.model("Boar", BoarSchema);
 
 // Define the schema for a Sow
 const SowSchema = new mongoose.Schema({
-  id: Number,
+  id: String,
+  Number,
+
   roomNumber: Number,
   CSF: Date,
   FMD: Date,
@@ -28,7 +31,9 @@ const Sow = mongoose.model("Sow", SowSchema);
 // Create the model for a single piglets
 
 const PigletsSchema = new mongoose.Schema({
-  id: Number,
+  id: String,
+  Number,
+
   motherId: Number,
   fatherId: Number,
   dob: Date,
@@ -43,13 +48,14 @@ const Piglets = mongoose.model("Piglets", PigletsSchema);
 
 //Model for Khassi
 const KhassiSchema = new mongoose.Schema({
-  id: Number,
+  id: String,
+  Number,
   roomNumber: Number,
   CSF: Date,
   FMD: Date,
   Deworm: Date,
   Weight: Number,
-})
+});
 
 const Khassi = mongoose.model("Khassi", KhassiSchema);
 
@@ -64,4 +70,4 @@ async function connectToDatabase() {
 }
 
 // Export the Boar model and the connectToDatabase function
-module.exports = { Boar, Sow,Piglets,Khassi, connectToDatabase };
+module.exports = { Boar, Sow, Piglets, Khassi, connectToDatabase };

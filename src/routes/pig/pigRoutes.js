@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Boar, Sow , Piglets, Khassi} = require("../models/pigmodel");
+const { Boar, Sow , Piglets, Khassi} = require("../../models/pigmodel");
 
 // Boar route -----------------------------------------------------------------------------------
 router.post("/submit-form-boar", async (req, res) => {

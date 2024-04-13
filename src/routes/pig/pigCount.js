@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const {Boar,Sow, Piglets, Khassi} = require("../models/pigmodel")
+const {Boar,Sow, Piglets, Khassi} = require("../../models/pigmodel")
 
 const router = express.Router();
 
