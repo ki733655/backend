@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Boar, Sow,Piglets, Khassi } = require("../models/pigmodel");
+const { Boar, Sow,Piglets, Khassi } = require("../../models/pigmodel");
 
 router.delete("/boar-delete/:id", async (req, res) => {
     const id = req.params.id;

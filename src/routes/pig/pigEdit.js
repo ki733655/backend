@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Boar, Sow, Piglets, Khassi } = require("../models/pigmodel");
+const { Boar, Sow, Piglets, Khassi } = require("../../models/pigmodel");
 
 router.put("/boar-edit", (req, res) => {
   Boar.findOneAndUpdate(
