@@ -7,6 +7,7 @@ const pigDetails = require("./pig/pigDetails")
 const pigDelete = require("./pig/pigDelete")
 const pigEdit = require("./pig/pigEdit")
 const pigSearch = require("./pig/pigSearch")
+const orders = require("./Orders/orders")
 // orders
 const pigId = require("./orders/pigId")
 
@@ -15,8 +16,16 @@ router.get("/", (req, res) => {
   });
 
   // Pig entry route 
-  router.use(pigsRoutes,pigCount,pigDetails, pigDelete, pigEdit,pigSearch, pigId)
-
+  router.use(pigsRoutes,pigCount,pigDetails, pigDelete, pigEdit,pigSearch, pigId,orders)
+  // router.use("/pigs", pigsRoutes);
+  // router.use("/pigs", pigCount);
+  // router.use("/pigs", pigDetails);
+  // router.use("/pigs", pigDelete);
+  // router.use("/pigs", pigEdit);
+  // router.use("/pigs", pigSearch);
+  // router.use("/orders", pigId);
+  // router.use("/orders", orders);
+  
 
 
 module.exports = router;
