@@ -7,7 +7,7 @@ const pigDetails = require("./pig/pigDetails")
 const pigDelete = require("./pig/pigDelete")
 const pigEdit = require("./pig/pigEdit")
 const pigSearch = require("./pig/pigSearch")
-const orders = require("./Orders/orders")
+const orders = require("./orders/orders")
 // orders
 const pigId = require("./orders/pigId")
 

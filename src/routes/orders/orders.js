@@ -12,24 +12,24 @@ router.post("/submit-form-order", async (req, res) => {
   
       // Create a new order document based on the submitted data
       const neworder = new orders({
-        orderID: req.body.orderId,
-        Customer_name: req.body.customerName,
-        type_of_pig: req.body.pigIds,
-        Total_weight:req.body.totalWeight,
-        Address: req.body.address,
-        Advance: req.body.advance,
-        Final_payment: req.body.finalPayment,
-        Phone_no: req.body.phoneNumber,
-        Comment: req.body.comment,
-        Delivery_date: req.body.deliveryDate,
-        // Delivery_Status: req.body.deliveryStatus
+        orderId: req.body.orderId,
+        customerName: req.body.customerName,
+        pigIds: req.body.pigIds,
+        totalWeight :req.body.totalWeight,
+        address: req.body.address,
+        advance: req.body.advance,
+        finalPayment: req.body.finalPayment,
+        phoneNumber: req.body.phoneNumber,
+        comment: req.body.comment,
+        deliveryDate: req.body.deliveryDate,
+        deliveryStatus: req.body.deliveryStatus
       });
   
       // Save the order data to the database
-      await neworder.save();
+      const data = await neworder.save();
   
       // Send a success response
-      res.json({ message: "order data received successfully" });
+      res.send(data);
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
