@@ -1,17 +1,17 @@
 const express = require("express");
 const router = express.Router();
-const {orders} = require("../../models/orders");
+const {Order} = require("../../models/ordermodel");
 
 // order route -----------------------------------------------------------------------------------
 router.post("/submit-form-order", async (req, res) => {
     try {
       // Check if order model is available
-      if (!orders) {
+      if (!Order) {
         return res.status(500).json({ message: "order model not found" });
       }
   
       // Create a new order document based on the submitted data
-      const neworder = new orders({
+      const neworder = new Order({
         orderId: req.body.orderId,
         customerName: req.body.customerName,
         pigIds: req.body.pigIds,
@@ -36,4 +36,4 @@ router.post("/submit-form-order", async (req, res) => {
     }
   });
 
-  module.exports = router
+  module.exports = router;

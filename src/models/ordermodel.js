@@ -11,7 +11,7 @@ const orderSchema = new mongoose.Schema({
     type: String,
   },
   pigIds: {
-    type: Array, // Assuming pigIds are stored as strings (e.g., ["pig1", "pig2"])
+    type: Array, 
   },
   totalWeight: {
     type: Number,
@@ -40,6 +40,6 @@ const orderSchema = new mongoose.Schema({
   },
 });
 
-const orders = mongoose.model("Order", orderSchema);
+const Order = mongoose.model("Order", orderSchema);
 
-module.exports = { orders };
+module.exports = { Order };
