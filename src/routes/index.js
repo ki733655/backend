@@ -12,6 +12,7 @@ const orderForm = require("./order/orderForm");
 const orderDetail = require("./order/orderDetail");
 const orderSearch = require("./order/orderSearch");
 const orderDelete = require("./order/orderDelete");
+const orderEdit  = require("./order/orderEdit")
 router.use(
   pigForm,
   pigCount,
@@ -19,10 +20,12 @@ router.use(
   pigDelete,
   pigEdit,
   pigSearch,
+  // below are the orders route
   orderForm,
   orderDetail,
   orderSearch,
-  orderDelete
+  orderDelete,
+  orderEdit
 );
 
 module.exports = router;

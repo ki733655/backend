@@ -1,10 +1,9 @@
-// orders.js
 
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
   orderId: {
-    type: String,
+    type: String, Number,
     unique: true,
   },
   customerName: {
