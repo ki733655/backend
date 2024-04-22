@@ -2,8 +2,11 @@ const mongoose = require("mongoose");
 
 // Define the schema for a boar
 const BoarSchema = new mongoose.Schema({
-  id: String,
-  Number,
+  id: {
+    type: String,
+    Number,
+    unique: true,
+  },
   roomNumber: Number,
   CSF: Date,
   FMD: Date,
@@ -16,8 +19,11 @@ const Boar = mongoose.model("Boar", BoarSchema);
 
 // Define the schema for a Sow
 const SowSchema = new mongoose.Schema({
-  id: String,
-  Number,
+  id: {
+    type: String,
+    Number,
+    unique: true,
+  },
 
   roomNumber: Number,
   CSF: Date,
@@ -31,8 +37,11 @@ const Sow = mongoose.model("Sow", SowSchema);
 // Create the model for a single piglets
 
 const PigletsSchema = new mongoose.Schema({
-  id: String,
-  Number,
+  id: {
+    type: String,
+    Number,
+    unique: true,
+  },
 
   motherId: Number,
   fatherId: Number,
@@ -48,8 +57,11 @@ const Piglets = mongoose.model("Piglets", PigletsSchema);
 
 //Model for Khassi
 const KhassiSchema = new mongoose.Schema({
-  id: String,
-  Number,
+  id: {
+    type: String,
+    Number,
+    unique: true,
+  },
   roomNumber: Number,
   CSF: Date,
   FMD: Date,
