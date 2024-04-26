@@ -12,6 +12,7 @@ const BoarSchema = new mongoose.Schema({
   FMD: Date,
   Deworm: Date,
   Weight: Number,
+  note: String,
 });
 
 // Create the model for a single boar
@@ -30,6 +31,8 @@ const SowSchema = new mongoose.Schema({
   FMD: Date,
   Deworm: Date,
   Weight: Number,
+  note: String,
+
 });
 // Create the model for a single sow
 const Sow = mongoose.model("Sow", SowSchema);
@@ -42,7 +45,6 @@ const PigletsSchema = new mongoose.Schema({
     Number,
     unique: true,
   },
-
   motherId: String,
   fatherId: String,
   dob: Date,
@@ -51,6 +53,8 @@ const PigletsSchema = new mongoose.Schema({
   swineFever: Date,
   deworming: Date,
   weight: Number,
+  note: String,
+
 });
 
 const Piglets = mongoose.model("Piglets", PigletsSchema);
@@ -67,6 +71,7 @@ const KhassiSchema = new mongoose.Schema({
   FMD: Date,
   Deworm: Date,
   Weight: Number,
+  note: String,
 });
 
 const Khassi = mongoose.model("Khassi", KhassiSchema);

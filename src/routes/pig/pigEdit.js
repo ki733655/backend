@@ -12,6 +12,7 @@ router.put("/boar-edit", (req, res) => {
       FMD: req.body.FMD || null,
       Deworm: req.body.Deworm || null,
       Weight: req.body.Weight || null,
+      note: req.body.note || null,
     },
     { new: true } // This option returns the updated document
   )
@@ -40,6 +41,8 @@ router.put("/sow-edit", (req, res) => {
       FMD: req.body.FMD || null,
       Deworm: req.body.Deworm || null,
       Weight: req.body.Weight || null,
+      note: req.body.note || null,
+
     },
     { new: true } // This option returns the updated document
   )
@@ -71,6 +74,8 @@ router.put("/piglet-edit", (req, res) => {
       swineFever: req.body.swineFever || null,
       deworming: req.body.deworming || null,
       weight: req.body.weight || null,
+      note: req.body.note || null,
+
     },
     { new: true } // This option returns the updated document
   )
@@ -102,6 +107,8 @@ router.put("/khassi-edit", (req, res) => {
       FMD: req.body.FMD || null,
       Deworm: req.body.Deworm || null,
       Weight: req.body.Weight || null,
+      note: req.body.note || null,
+
     },
     { new: true } // This option returns the updated document
   )
