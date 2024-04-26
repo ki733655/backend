@@ -13,8 +13,21 @@ const orderDetail = require("./order/orderDetail");
 const orderSearch = require("./order/orderSearch");
 const orderDelete = require("./order/orderDelete");
 const orderEdit  = require("./order/orderEdit");
-const saleDetails = require("./sales/saleDetails")
-const saleSearch = require("./sales/saleSearch")
+const saleDetails = require("./sales/saleDetails");
+const saleSearch = require("./sales/saleSearch");
+
+// orders
+const EmployeeForm = require("./Employee/EmployeeForm");
+const EmployeeDetail = require("./Employee/EmployeeDetail");
+const EmployeeEdit = require ("./Employee/EmployeeEdit");
+const EmployeeDelete = require("./Employee/EmployeeDelete");
+// const EmployeeSearch = require("./Employee/EmployeeSearch");
+
+
+
+
+
+
 router.use(
   pigForm,
   pigCount,
@@ -30,7 +43,15 @@ router.use(
   orderEdit,
   // below is the sale routes
   saleDetails,
-  saleSearch
+  saleSearch,
+
+  // below is the sale routes
+  EmployeeForm,
+  EmployeeDetail,
+  EmployeeEdit,
+  EmployeeDelete
+  // EmployeeSearch
+
 );
 
 module.exports = router;
