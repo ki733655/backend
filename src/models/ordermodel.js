@@ -12,6 +12,9 @@ const orderSchema = new mongoose.Schema({
   pigIds: {
     type: Array, 
   },
+  remarks: {
+    type : String,
+  },
   totalWeight: {
     type: Number,
   },
@@ -25,7 +28,7 @@ const orderSchema = new mongoose.Schema({
     type: Number,
   },
   phoneNumber: {
-    type: Number,
+    type: String,
   },
   comment: {
     type: String,
