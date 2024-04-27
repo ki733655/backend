@@ -10,6 +10,7 @@ router.put("/order-edit", async(req, res) => {
       orderId: req.body.orderId || null,
       customerName: req.body.customerName || null,
       pigIds: req.body.pigIds || null,
+      remarks: req.body.remarks || null,
       totalWeight: req.body.totalWeight || null,
       address: req.body.address || null,
       advance: req.body.advance || null,

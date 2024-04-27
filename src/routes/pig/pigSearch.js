@@ -5,7 +5,7 @@ const { Boar, Sow, Piglets, Khassi } = require("../../models/pigmodel");
 router.get("/boar-search-id", async (req, res) => {
     try {
         const data = req.query.search;
-        const results = await Boar.find({ id: data });
+        const results = await Boar.find({ id: { $regex: new RegExp(`^${data}`, 'i') } });
 
         // Check if there are any results
         if (results.length > 0) {
@@ -22,7 +22,7 @@ router.get("/boar-search-id", async (req, res) => {
 router.get("/boar-search-roomNumber", async (req, res) => {
     try {
         const data = req.query.search;
-        const results = await Boar.find({ roomNumber: data });
+        const results = await Boar.find({ roomNumber: { $regex: new RegExp(`^${data}`, 'i') } });
 
         // Check if there are any results
         if (results.length > 0) {
@@ -39,8 +39,7 @@ router.get("/boar-search-roomNumber", async (req, res) => {
 router.get("/boar-search-weight", async (req, res) => {
     try {
         const data = req.query.search;
-        const results = await Boar.find({ Weight: data });
-
+        const results = await Boar.find({ Weight: { $regex: new RegExp(`^${data}`, 'i') } });
         // Check if there are any results
         if (results.length > 0) {
             res.status(200).json(results); // Send the results back as JSON
@@ -58,7 +57,7 @@ router.get("/boar-search-weight", async (req, res) => {
 router.get("/sow-search-id", async (req, res) => {
     try {
         const data = req.query.search;
-        const results = await Sow.find({ id: data });
+        const results = await Sow.find({ id: { $regex: new RegExp(`^${data}`, 'i') } });
 
         // Check if there are any results
         if (results.length > 0) {
@@ -76,7 +75,7 @@ router.get("/sow-search-id", async (req, res) => {
 router.get("/sow-search-roomNumber", async (req, res) => {
     try {
         const data = req.query.search;
-        const results = await Sow.find({ roomNumber: data });
+        const results = await Sow.find({ roomNumber: { $regex: new RegExp(`^${data}`, 'i') } });
 
         // Check if there are any results
         if (results.length > 0) {
@@ -93,7 +92,7 @@ router.get("/sow-search-roomNumber", async (req, res) => {
 router.get("/sow-search-weight", async (req, res) => {
     try {
         const data = req.query.search;
-        const results = await Sow.find({ Weight: data });
+        const results = await Sow.find({ Weight: { $regex: new RegExp(`^${data}`, 'i') } });
 
         // Check if there are any results
         if (results.length > 0) {
@@ -111,7 +110,7 @@ router.get("/sow-search-weight", async (req, res) => {
 router.get("/piglet-search-id", async (req, res) => {
     try {
         const data = req.query.search;
-        const results = await Piglets.find({ id: data });
+        const results = await Piglets.find({ id: { $regex: new RegExp(`^${data}`, 'i') } });
 
         // Check if there are any results
         if (results.length > 0) {
@@ -129,7 +128,7 @@ router.get("/piglet-search-id", async (req, res) => {
 router.get("/piglet-search-roomNumber", async (req, res) => {
     try {
         const data = req.query.search;
-        const results = await Piglets.find({ roomNumber: data });
+        const results = await Piglets.find({ roomNumber: { $regex: new RegExp(`^${data}`, 'i') } });
 
         // Check if there are any results
         if (results.length > 0) {
@@ -146,7 +145,7 @@ router.get("/piglet-search-roomNumber", async (req, res) => {
 router.get("/piglet-search-weight", async (req, res) => {
     try {
         const data = req.query.search;
-        const results = await Piglets.find({ weight: data });
+        const results = await Piglets.find({ weight: { $regex: new RegExp(`^${data}`, 'i') } });
 
         // Check if there are any results
         if (results.length > 0) {
@@ -164,7 +163,7 @@ router.get("/piglet-search-weight", async (req, res) => {
 router.get("/khassi-search-id", async (req, res) => {
     try {
         const data = req.query.search;
-        const results = await Khassi.find({ id: data });
+        const results = await Khassi.find({ id: { $regex: new RegExp(`^${data}`, 'i') } });
 
         // Check if there are any results
         if (results.length > 0) {
@@ -182,7 +181,7 @@ router.get("/khassi-search-id", async (req, res) => {
 router.get("/khassi-search-roomNumber", async (req, res) => {
     try {
         const data = req.query.search;
-        const results = await Khassi.find({ roomNumber: data });
+        const results = await Khassi.find({ roomNumber: { $regex: new RegExp(`^${data}`, 'i') } });
 
         // Check if there are any results
         if (results.length > 0) {
@@ -199,7 +198,7 @@ router.get("/khassi-search-roomNumber", async (req, res) => {
 router.get("/khassi-search-weight", async (req, res) => {
     try {
         const data = req.query.search;
-        const results = await Khassi.find({ Weight: data });
+        const results = await Khassi.find({ Weight: { $regex: new RegExp(`^${data}`, 'i') } });
 
         // Check if there are any results
         if (results.length > 0) {

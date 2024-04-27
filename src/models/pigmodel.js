@@ -7,11 +7,11 @@ const BoarSchema = new mongoose.Schema({
     Number,
     unique: true,
   },
-  roomNumber: Number,
+  roomNumber: String,
   CSF: Date,
   FMD: Date,
   Deworm: Date,
-  Weight: Number,
+  Weight: String,
   note: String,
 });
 
@@ -26,11 +26,11 @@ const SowSchema = new mongoose.Schema({
     unique: true,
   },
 
-  roomNumber: Number,
+  roomNumber: String,
   CSF: Date,
   FMD: Date,
   Deworm: Date,
-  Weight: Number,
+  Weight: String,
   note: String,
 
 });
@@ -49,10 +49,10 @@ const PigletsSchema = new mongoose.Schema({
   fatherId: String,
   dob: Date,
   gender: String,
-  roomNumber: Number,
+  roomNumber: String,
   swineFever: Date,
   deworming: Date,
-  weight: Number,
+  weight: String,
   note: String,
 
 });
@@ -66,11 +66,11 @@ const KhassiSchema = new mongoose.Schema({
     Number,
     unique: true,
   },
-  roomNumber: Number,
+  roomNumber: String,
   CSF: Date,
   FMD: Date,
   Deworm: Date,
-  Weight: Number,
+  Weight: String,
   note: String,
 });
 
