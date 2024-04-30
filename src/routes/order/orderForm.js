@@ -17,6 +17,7 @@ router.post("/submit-form-order", async (req, res) => {
       orderId: req.body.orderId,
       customerName: req.body.customerName,
       pigIds: req.body.pigIds,
+      remarks: req.body.remarks,
       totalWeight: req.body.totalWeight,
       address: req.body.address,
       advance: req.body.advance,

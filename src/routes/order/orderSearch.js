@@ -4,8 +4,8 @@ const { Order } = require("../../models/ordermodel");
 
 router.get("/order-search-id", async (req, res) => {
     try {
-        const data = req.query.search;
-        const results = await Order.find({ orderId: data });
+        const data = req.query.search; // Assuming searchTerm contains the letter to search for
+        const results = await Order.find({ orderId: { $regex: new RegExp(`^${data}`, 'i') } });
 
         // Check if there are any results
         if (results.length > 0) {
@@ -14,16 +14,17 @@ router.get("/order-search-id", async (req, res) => {
             res.status(404).json({ message: "No matching records found" }); // Send a 404 status if no results found
         }
     } catch (err) {
-        console.error("Error searching for boar:", err);
+        console.error("Error searching for order:", err);
         res.status(500).json({ message: "Internal server error" }); // Send a 500 status if an error occurs
     }
 });
+
 
 // route for order search by name----------------------------------------------
 router.get("/order-search-customerName", async (req, res) => {
     try {
         const data = req.query.search;
-        const results = await Order.find({ customerName: data });
+        const results = await Order.find({ customerName: { $regex: new RegExp(`^${data}`, 'i') } });
 
         // Check if there are any results
         if (results.length > 0) {
@@ -40,7 +41,7 @@ router.get("/order-search-customerName", async (req, res) => {
 router.get("/order-search-phoneNumber", async (req, res) => {
     try {
         const data = req.query.search;
-        const results = await Order.find({ phoneNumber: data });
+        const results = await Order.find({ phoneNumber: { $regex: new RegExp(`^${data}`, 'i') } });
 
         // Check if there are any results
         if (results.length > 0) {
