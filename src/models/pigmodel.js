@@ -63,7 +63,7 @@ const Piglets = mongoose.model("Piglets", PigletsSchema);
 //Model for Khassi
 const KhassiSchema = new mongoose.Schema({
   id: {
-    type: String,
+    type:  String,
     Number,
     unique: true,
   },
