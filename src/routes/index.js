@@ -24,6 +24,12 @@ const EmployeeEdit = require ("./Employee/EmployeeEdit");
 const EmployeeDelete = require("./Employee/EmployeeDelete");
 // const EmployeeSearch = require("./Employee/EmployeeSearch");
 
+const dashboardCount = require("./dashboard/dashboardCount")
+const bargraph = require("./dashboard/bargraph")
+const barEntry = require("./bargraph/barEntry")
+
+
+
 
 
 
@@ -48,12 +54,16 @@ router.use(
   saleDetails,
   saleSearch,
 
-  // below is the sale routes
+  // below is the employee routes
   EmployeeForm,
   EmployeeDetail,
   EmployeeEdit,
-  EmployeeDelete
-  // EmployeeSearch
+  EmployeeDelete,
+  // below is the dashboard routes
+  dashboardCount,
+  bargraph, // this to send the bar data to the frontend
+  barEntry, // for entring the data to the bar model
+
 
 );
 
