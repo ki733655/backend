@@ -13,6 +13,7 @@ const orderDetail = require("./order/orderDetail");
 const orderSearch = require("./order/orderSearch");
 const orderDelete = require("./order/orderDelete");
 const orderEdit  = require("./order/orderEdit");
+// const orderecel = require("./orderexcel");
 const saleDetails = require("./sales/saleDetails");
 const saleSearch = require("./sales/saleSearch");
 
@@ -47,6 +48,8 @@ router.use(
   orderSearch,
   orderDelete,
   orderEdit,
+  // orderexcel,
+
   // below is the sale routes
   saleDetails,
   saleSearch,
