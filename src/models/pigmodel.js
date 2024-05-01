@@ -46,8 +46,8 @@ const PigletsSchema = new mongoose.Schema({
     unique: true,
   },
 
-  motherId: Number,
-  fatherId: Number,
+  motherId: String,
+  fatherId: String,
   dob: Date,
   gender: String,
   roomNumber: String,
