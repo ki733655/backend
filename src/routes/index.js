@@ -1,6 +1,10 @@
 // Placeholder Express routes for items
 const express = require("express");
 const router = express.Router();
+// login
+const checkLogin = require("../routes/login/checkLogin");
+const registerLogin = require("../routes/login/registerLogin");
+// pigs
 const pigForm = require("./pig/pigForm");
 const pigCount = require("./pig/pigCount");
 const pigDetails = require("./pig/pigDetails");
@@ -12,7 +16,7 @@ const orderForm = require("./order/orderForm");
 const orderDetail = require("./order/orderDetail");
 const orderSearch = require("./order/orderSearch");
 const orderDelete = require("./order/orderDelete");
-const orderEdit  = require("./order/orderEdit");
+const orderEdit = require("./order/orderEdit");
 // const orderecel = require("./orderexcel");
 const saleDetails = require("./sales/saleDetails");
 const saleSearch = require("./sales/saleSearch");
@@ -20,22 +24,20 @@ const saleSearch = require("./sales/saleSearch");
 // orders
 const EmployeeForm = require("./Employee/EmployeeForm");
 const EmployeeDetail = require("./Employee/EmployeeDetail");
-const EmployeeEdit = require ("./Employee/EmployeeEdit");
+const EmployeeEdit = require("./Employee/EmployeeEdit");
 const EmployeeDelete = require("./Employee/EmployeeDelete");
 // const EmployeeSearch = require("./Employee/EmployeeSearch");
 
-const dashboardCount = require("./dashboard/dashboardCount")
-const bargraph = require("./dashboard/bargraph")
-const barEntry = require("./bargraph/barEntry")
-
-
-
-
-
-
-
+const dashboardCount = require("./dashboard/dashboardCount");
+const bargraph = require("./dashboard/bargraph");
+const barEntry = require("./bargraph/barEntry");
 
 router.use(
+  // login
+  registerLogin,
+  checkLogin,
+
+  // below is  the pig routes
   pigForm,
   pigCount,
   pigDetails,
@@ -62,9 +64,7 @@ router.use(
   // below is the dashboard routes
   dashboardCount,
   bargraph, // this to send the bar data to the frontend
-  barEntry, // for entring the data to the bar model
-
-
+  barEntry // for entring the data to the bar model
 );
 
 module.exports = router;
