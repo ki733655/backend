@@ -31,6 +31,7 @@ const EmployeeDelete = require("./Employee/EmployeeDelete");
 const dashboardCount = require("./dashboard/dashboardCount");
 const bargraph = require("./dashboard/bargraph");
 const barEntry = require("./bargraph/barEntry");
+const uploadboar = require ("./Excel/uploadboar")
 
 router.use(
   // login
@@ -64,7 +65,8 @@ router.use(
   // below is the dashboard routes
   dashboardCount,
   bargraph, // this to send the bar data to the frontend
-  barEntry // for entring the data to the bar model
+  barEntry,
+  uploadboar // for entring the data to the bar model
 );
 
 module.exports = router;
