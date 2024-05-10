@@ -7,9 +7,22 @@ const { Order } = require("../../models/ordermodel");
 const router = express.Router();
 
 // sale count route -----------------------------------------------------
+const moment = require('moment');
+
 router.get("/sale-count", async (req, res) => {
     try {
-        const sales = await Sale.find(); // Fetch all sales
+        // Get the current month start and end dates
+        const currentMonthStart = moment().startOf('month');
+        const currentMonthEnd = moment().endOf('month');
+
+        // Find sales for the current month
+        const sales = await Sale.find({
+            deliveryDate: {
+                $gte: currentMonthStart.toDate(),
+                $lte: currentMonthEnd.toDate()
+            }
+        });
+
         let totalAdvance = 0;
         let totalFinalPayment = 0;
 
@@ -23,12 +36,13 @@ router.get("/sale-count", async (req, res) => {
         const totalPayment = totalAdvance + totalFinalPayment;
 
         // Send response with total advance, total final payment, and total payment
-        res.json({totalPayment });
+        res.json({ totalPayment });
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
 
 
 router.get("/pig-count", async(req, res) => {
