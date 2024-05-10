@@ -13,15 +13,6 @@ function isValidDate(dateString) {
   return !isNaN(Date.parse(dateString));
 }
 
-// Function to parse date string
-function parseDate(dateString) {
-  if (!dateString || isNaN(dateString)) {
-    return null;
-  }
-  const timestamp = parseInt(dateString, 10);
-  return new Date(timestamp);
-}
-
 router.post("/boar-upload", upload.single("excelFile"), async (req, res) => {
   const file = req.file;
   if (!file) {
@@ -45,9 +36,9 @@ router.post("/boar-upload", upload.single("excelFile"), async (req, res) => {
       const boarData = {
         id: data.id,
         roomNumber: data.roomNumber || null,
-        CSF: parseDate(data.CSF),
-        FMD: parseDate(data.FMD),
-        Deworm: parseDate(data.Deworm),
+        CSF: isValidDate(data.CSF) ? new Date(data.CSF) : null,
+        FMD: isValidDate(data.FMD) ? new Date(data.FMD) : null,
+        Deworm: isValidDate(data.Deworm) ? new Date(data.Deworm) : null,
         Weight: data.Weight || null,
         note: data.note || null,
       };
