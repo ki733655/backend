@@ -6,7 +6,11 @@ const {connectToDatabase} = require("./src/models/pigmodel");
 const router = require("./src/routes/index")
 
 // Middleware setup
-app.use(cors());
+
+app.use(cors({ 
+  origin: "https://swargarifarm.netlify.app",
+  methods: ["GET","POST", "OPTIONS"],
+}));
 app.use(express.json());
 
 //Database connection
@@ -17,3 +21,4 @@ connectToDatabase();
 app.use(router)
 
 module.exports = app;
+
