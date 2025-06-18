@@ -8,18 +8,37 @@ const { Boar } = require("../../models/pigmodel");
 const router = express.Router();
 const upload = multer({ dest: "uploads/" });
 
-// Function to validate date string
-function isValidDate(dateString) {
-  return !isNaN(Date.parse(dateString));
-}
-
-// Function to parse date string
-function parseDate(dateString) {
-  if (!dateString || isNaN(dateString)) {
+// Function to parse date string or Date object
+function parseDate(dateInput) {
+  if (!dateInput) {
     return null;
   }
-  const timestamp = parseInt(dateString, 10);
-  return new Date(timestamp);
+
+  // Check if dateInput is already a Date object
+  if (dateInput instanceof Date) {
+    return dateInput;
+  }
+
+  // Try parsing date string in "DD-MM-YYYY" format
+  const parts = dateInput.split("-");
+  if (parts.length !== 3) {
+    console.error('Invalid date format:', dateInput);
+    return null; // Invalid date format
+  }
+
+  const day = parseInt(parts[0], 10);
+  const month = parseInt(parts[1], 10) - 1; // Months are 0-based
+  const year = parseInt(parts[2], 10);
+
+  const date = new Date(year, month, day);
+
+  // Check if the date is valid
+  if (isNaN(date.getTime())) {
+    console.error('Invalid date:', dateInput);
+    return null; // Invalid date
+  }
+
+  return date;
 }
 
 router.post("/boar-upload", upload.single("excelFile"), async (req, res) => {
@@ -43,13 +62,15 @@ router.post("/boar-upload", upload.single("excelFile"), async (req, res) => {
       }
 
       const boarData = {
-        id: data.id,
-        roomNumber: data.roomNumber || null,
+        id: data.id.trim(),
+        roomNumber: parseInt(data.roomNumber) || null,
         CSF: parseDate(data.CSF),
         FMD: parseDate(data.FMD),
         Deworm: parseDate(data.Deworm),
-        Weight: data.Weight || null,
+        Weight: parseFloat(data.Weight) || null,
         note: data.note || null,
+        createdAt: new Date(), // assuming you want to set createdAt to current date/time
+        updatedAt: new Date() // assuming you want to set updatedAt to current date/time
       };
 
       // Create a new Boar document

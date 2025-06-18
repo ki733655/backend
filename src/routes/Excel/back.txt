@@ -13,6 +13,46 @@ function isValidDate(dateString) {
   return !isNaN(Date.parse(dateString));
 }
 
+// Function to parse date string
+// Function to parse date string
+function parseDate(dateString) {
+  if (!dateString) {
+    return null;
+  }
+
+  // Check if dateString is already a Date object
+  if (dateString instanceof Date) {
+    return dateString;
+  }
+
+  // Convert dateString to string to handle different data types
+  dateString = dateString.toString();
+
+  // Try parsing dateString in "dd-mm-yyyy" format
+  const datePattern = /^(\d{2})-(\d{2})-(\d{4})$/;
+  const match = dateString.match(datePattern);
+
+  if (!match) {
+    console.error('Invalid date format:', dateString);
+    return null;
+  }
+
+  const day = parseInt(match[1], 10);
+  const month = parseInt(match[2], 10) - 1; // Months in JavaScript are zero-indexed
+  const year = parseInt(match[3], 10);
+
+  // Create a new Date object
+  const date = new Date(year, month, day);
+
+  // Check if the date is valid
+  if (isNaN(date.getTime())) {
+    console.error('Invalid date:', dateString);
+    return null; // Invalid date
+  }
+
+  return date;
+}
+
 router.post("/boar-upload", upload.single("excelFile"), async (req, res) => {
   const file = req.file;
   if (!file) {
@@ -34,12 +74,12 @@ router.post("/boar-upload", upload.single("excelFile"), async (req, res) => {
       }
 
       const boarData = {
-        id: data.id,
-        roomNumber: data.roomNumber || null,
-        CSF: isValidDate(data.CSF) ? new Date(data.CSF) : null,
-        FMD: isValidDate(data.FMD) ? new Date(data.FMD) : null,
-        Deworm: isValidDate(data.Deworm) ? new Date(data.Deworm) : null,
-        Weight: data.Weight || null,
+        id: data.id.trim(),
+        roomNumber: parseInt(data.roomNumber) || null,
+        CSF: parseDate(data.CSF),
+        FMD: parseDate(data.FMD),
+        Deworm: parseDate(data.Deworm),
+        Weight: parseFloat(data.Weight) || null,
         note: data.note || null,
       };
 
