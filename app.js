@@ -2,7 +2,6 @@
 const express = require('express');
 const app = express();
 const cors = require("cors");
-const {connectToDatabase} = require("./src/models/pigmodel");
 const router = require("./src/routes/index")
 
 // Middleware setup
@@ -14,8 +13,16 @@ app.use(cors({
 app.use(express.json());
 
 //Database connection
-// Database connection setup
-connectToDatabase();
+
+require('dotenv').config();
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log("Connected to MongoDB Atlas"))
+  .catch(err => console.error("DB connection error:", err));
+
 
 // Routes setup
 app.use(router)
