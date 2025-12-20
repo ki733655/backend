@@ -1,14 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 const { Admin } = require("../../models/admin");
 
 // Registration route
 router.post("/register", async (req, res) => {
   try {
     const { username, password } = req.body;
+    console.log("Register body:", req.body);
 
-    console.log('Password received from request:', password); // Add this logging statement
+    console.log("Password received from request:", password); // Add this logging statement
+    if (!username || !password) {
+      return res.status(400).json({
+        message: "Username and password are required",
+      });
+    }
 
     // Check if username already exists
     const existingUser = await Admin.findOne({ username });
@@ -22,7 +28,7 @@ router.post("/register", async (req, res) => {
     // Create a new user
     const newUser = new Admin({
       username,
-      password: hashedPassword
+      password: hashedPassword,
     });
 
     // Save the new user to the database
